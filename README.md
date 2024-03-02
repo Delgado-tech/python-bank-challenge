@@ -25,7 +25,8 @@ O desafio proposto consiste na criação de um sistema bancario simples com as o
 > 3 - Processamento de Saque Válido:
 >
 > Caso o valor informado seja válido, o número de saques diários restantes é reduzido, o saldo do usuário é diminuido, e os detalhes da transação, incluindo valor e data/hora, são armazenados em uma variável de extrato.
-> ‎
+> ‎![image](https://github.com/Delgado-tech/python-bank-challenge/assets/60985347/f9752e74-0f45-40a8-b11b-05a857435845)
+
 
 ### Depositar (Deposit)
 
@@ -55,7 +56,7 @@ Para rodar o projeto é necessário ter instalado em sua máquina o `Python v3.1
 #### Clonando o repositório
 
 ```bash
-$ git clone <rep>/python-bank-challenge
+$ git clone https://github.com/Delgado-tech/python-bank-challenge.git
 $ cd python-bank-challenge
 ```
 
@@ -80,6 +81,8 @@ $ python main.py
 ```
 
 Se tudo funcionou aparecera o menu da aplicação no seu terminal:
-(img)
+
+![image](https://github.com/Delgado-tech/python-bank-challenge/assets/60985347/f12b2735-782c-440e-8c68-bd49dee5d8d1)
+
 
 Pronto! Agora você pode se divertir com o projeto!
