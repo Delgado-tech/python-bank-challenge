@@ -1,5 +1,10 @@
-# Desafio Python
+<img id="header" src="https://capsule-render.vercel.app/api?type=waving&color=0:4B8BBE,100:FFD43B&height=150&section=header" width="100%"/>
 
+<h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python</h1>
+
+<br>
+
+### Descrição:
 O desafio proposto consiste na criação de um sistema bancario simples com as opções `sacar`, `depositar` e `visualizar extrato`.
 
 ### Regras de negócio:
@@ -7,6 +12,8 @@ O desafio proposto consiste na criação de um sistema bancario simples com as o
 1. Os usuários que realizarem a operação `sacar` só podem realizar 3 saques por dia, onde cada um deve ser de no máximo R$500;
 2. Ao realizar a operações `sacar` ou `depositar`, deve-se armazenado o valor e a data/hora da operação para posteriormente poder ser visualizada na operação `visualizar extrato`;
 3. A operação `visualizar extrato` deve listar os registros por data em ordem decrescente no terminal (a data mais antiga até a mais atual).
+
+<br>
 
 ## Funcionalidades
 
@@ -25,9 +32,6 @@ O desafio proposto consiste na criação de um sistema bancario simples com as o
 > 3 - Processamento de Saque Válido:
 >
 > Caso o valor informado seja válido, o número de saques diários restantes é reduzido, o saldo do usuário é diminuido, e os detalhes da transação, incluindo valor e data/hora, são armazenados em uma variável de extrato.
->
-> ‎![image](https://github.com/Delgado-tech/python-bank-challenge/assets/60985347/f9752e74-0f45-40a8-b11b-05a857435845)
-
 
 ### Depositar (Deposit)
 
@@ -43,6 +47,8 @@ O desafio proposto consiste na criação de um sistema bancario simples com as o
 ### Visualizar Extrato (View Statement)
 
 > É carregado as informações armazenadas da lista de extrato e exibida no terminal em ordem descrescente ordenada pela data/hora, também é mostrado o número total de saques e depositos realizados pela conta.
+>
+> ‎![image](https://github.com/Delgado-tech/python-bank-challenge/assets/60985347/f9752e74-0f45-40a8-b11b-05a857435845)
 
 <br>
 
@@ -51,6 +57,7 @@ O desafio proposto consiste na criação de um sistema bancario simples com as o
 ### Pre-requisitos
 
 Para rodar o projeto é necessário ter instalado em sua máquina o `Python v3.12.2+`, você pode realizar a instalação dele [aqui](https://www.python.org/downloads/).
+<br><br>
 
 ### Instalação
 
@@ -72,6 +79,7 @@ Para configurar o ambiente virtual do projeto no VSCode, siga os passos abaixo:
 > 3 - Uma janela será exibida, nela clique na opção `Python 3.12.2 ('.venv':venv)`.
 
 Com essas etapas concluídas, você estará utilizando o ambiente virtual do projeto.
+<br><br>
 
 ### Inicialização
 
@@ -87,3 +95,5 @@ Se tudo funcionou aparecera o menu da aplicação no seu terminal:
 
 
 Pronto! Agora você pode se divertir com o projeto!
+
+<img id="footer" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:161b22,100:30363d&height=150&section=footer" width="100%">
