@@ -25,6 +25,7 @@ O desafio proposto consiste na criação de um sistema bancario simples com as o
 > 3 - Processamento de Saque Válido:
 >
 > Caso o valor informado seja válido, o número de saques diários restantes é reduzido, o saldo do usuário é diminuido, e os detalhes da transação, incluindo valor e data/hora, são armazenados em uma variável de extrato.
+>
 > ‎![image](https://github.com/Delgado-tech/python-bank-challenge/assets/60985347/f9752e74-0f45-40a8-b11b-05a857435845)
 
 
