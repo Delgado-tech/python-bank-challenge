@@ -2,9 +2,9 @@
 
 ## Geral:
 
-- [ ] Criar um novo menu para se cadastrar ou entrar no serviço
+- [x] Criar um novo menu para se cadastrar ou entrar no serviço
 - [ ] Alteração de funções já existentes
-- [ ] Criar funções: `cadastrar usuário` (cliente do banco) e `cadastrar conta bancária` (vincular com usuário)
+- [x] Criar funções: `cadastrar usuário` (cliente do banco) e `cadastrar conta bancária` (vincular com usuário)
 
 ## Funções:
 
@@ -25,17 +25,17 @@
 
 ### Cadastrar usuário (NOVO):
 
-- [ ] Armazenar o usuário em uma lista, um usuário é composto por: `nome, data_de_nascimento, cpf e endereço`
-- [ ] O campo endereço é uma string com o formato: `logradouro, número - bairro - cidade/sigla_estado`
+- [x] Armazenar o usuário em uma lista, um usuário é composto por: `nome, data_de_nascimento, cpf e endereço`
+- [x] O campo endereço é uma string com o formato: `logradouro, número - bairro - cidade/sigla_estado`
 - [ ] O campo CPF deve armazenar somente os números
-- [ ] NÃO deve ser possível cadastrar dois usuários com o mesmo CPF
+- [x] NÃO deve ser possível cadastrar dois usuários com o mesmo CPF
 
 ### Criar conta corrente (NOVO):
 
-- [ ] Armazenar as contas em uma lista, uma conta é composta por: `agência, número_da_conta, usuário`
-- [ ] O número da conta é sequencial, iniciando em 1. O número da agência é fixo: "0001"
-- [ ] O usuário pode ter mais de uma conta
-- [ ] A conta só pode ter apenas um usuário
+- [x] Armazenar as contas em uma lista, uma conta é composta por: `agência, número_da_conta, usuário`
+- [x] O número da conta é sequencial, iniciando em 1. O número da agência é fixo: "0001"
+- [x] O usuário pode ter mais de uma conta
+- [x] A conta só pode ter apenas um usuário
 
 ### Visualizar usuários existentes (NOVO)
 
@@ -43,8 +43,8 @@
 
 ### Visualizar contas existentes (NOVO)
 
-- [ ] Mostrar todas as contas existentes ordenado por agência
+- [x] Mostrar todas as contas existentes ordenado por agência
 
 ### Pesquisar Usuário (NOVO)
 
-- [ ] Lista todas as informações do usuário junto com todas as contas vinculadas em seu nome ao pesquisar por seu id
+- [x] Listar todas as informações do usuário junto com todas as contas vinculadas em seu nome ao pesquisar por seu id

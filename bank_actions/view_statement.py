@@ -1,4 +1,3 @@
-import mockup
 from utils.clear_console import clear_console
 
 def view_statement():
