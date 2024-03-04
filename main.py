@@ -12,7 +12,7 @@ def exit_message():
     clear_console()
 
 def main():
-    view = user_page # home_page
+    view = home_page
     default_option = "0"
     option = default_option
 

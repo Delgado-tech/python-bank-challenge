@@ -10,11 +10,9 @@ default_max_daily_withdraws: int = 3
 
 class User:
     user_id: int
+    created_date: datetime
 
     email: str
-    balance: float
-    deposits: list[Transaction]
-    withdraws: list[Transaction]
     max_daily_withdraws: int = 3
 
     cpf: str
@@ -22,8 +20,9 @@ class User:
     birtdate: str
     address: Address
 
-    def __init__(self, *, email: str, password: str, name: str, cpf: str, birtdate: datetime, address: Address, balance: float = 0.0, user_id: int = None) -> None:
+    def __init__(self, *, email: str, password: str, name: str, cpf: str, birtdate: datetime, address: Address, created_date: datetime = datetime.now(), user_id: int = None) -> None:
         if user_id: self.user_id = user_id
+        if created_date: self.created_date = created_date
         self._daily_withdraws = default_max_daily_withdraws
         self.max_daily_withdraws = default_max_daily_withdraws
         self._next_daily_withdraws_regeneration_date = string_to_date((datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d 00:00:00"))
@@ -35,9 +34,6 @@ class User:
         # account
         self.email = email
         self._password = password
-        self.balance = balance
-        self.deposits = []
-        self.withdraws = []
 
     def get_id(self):
         return self.user_id

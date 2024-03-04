@@ -23,7 +23,7 @@ def user_page_index(option: str):
     [2] Visualizar contas
     [3] Abrir uma conta
     
-    [q] Deslogar 
+    [q] Deslogar Usuário
     [x] Fechar Aplicação \n
 ============================================
     """)
@@ -57,6 +57,8 @@ def user_account_login(option: str):
         
         if value.upper() == "X":
             return False, False
+        
+        inputs[key] = value
 
     password = input("Senha: ")
 
@@ -140,6 +142,7 @@ def user_create_account(_: str):
 
 def user_page(option: str):
     if option == "Q":
+        Session.clear()
         from views.home_page import home_page
         return home_page, False
 

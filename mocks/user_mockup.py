@@ -18,8 +18,7 @@ class UserMockup:
                 neighborhood="Tempora",
                 city="Votocity",
                 state="SP"
-            ),
-            balance=100.0
+            )
         )
     ]
 
@@ -28,8 +27,18 @@ class UserMockup:
         return len(UserMockup.user_list) + 1
     
     @staticmethod
-    def get_user(*, id: int):
-        search_results: list[User] = [u for u in UserMockup.user_list if u.get_id() == id]
+    def get_user(*, id: int | None = None, cpf: str | None = None, email: str | None = None):
+        
+        search_results: list[User] = []
+
+        if id:
+            search_results = [u for u in UserMockup.user_list if u.get_id() == id]
+
+        if cpf:
+            search_results = [u for u in UserMockup.user_list if u.cpf == cpf]
+
+        if email:
+            search_results = [u for u in UserMockup.user_list if u.email == email]
         
         return search_results[0] if len(search_results) > 0 else None
 
@@ -38,10 +47,13 @@ class UserMockup:
         search_results: list[User] = [u for u in UserMockup.user_list if u.cpf == user.cpf or u.email == user.email]
 
         if len(search_results) > 0:
-            return print("O CPF ou o Email informado já foi cadastrado!")
+            print("O CPF ou o Email informado já foi cadastrado!")
+            return False
 
         user.user_id = UserMockup.get_next_id()
         UserMockup.user_list.append(user)
+
+        return user.user_id
 
     @staticmethod
     def delete_user(*, id: int):
