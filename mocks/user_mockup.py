@@ -57,7 +57,8 @@ class UserMockup:
     def login_user(*, email, password):
         user = [u for u in UserMockup.user_list if u.email == email and u._password == password]
 
-        if len(user) == 0:
-            return False
+        if len(user) > 0:
+            return user[0].user_id
         
-        return user[0].user_id
+        return False
+        

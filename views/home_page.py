@@ -50,7 +50,7 @@ def home_page_login(option: str):
     user_id = UserMockup.login_user(email=email, password=password)
 
     if user_id == False:
-        input("E-mail ou Senha inválido!")
+        input("\nE-mail ou Senha inválido!")
         return home_page_login, False
 
     Session.user_id = user_id

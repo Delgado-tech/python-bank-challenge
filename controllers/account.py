@@ -7,7 +7,7 @@ class Account:
     account_number: str
     balance: float
 
-    def __init__(self, *, user_id: int, agency: str, password: str, created_date: datetime, balance: float = 0.0, account_number: str | None = None) -> None:
+    def __init__(self, *, user_id: int, agency: str, password: str, created_date: datetime = datetime.now(), balance: float = 0.0, account_number: str | None = None) -> None:
         if account_number: self.account_number = account_number
         self._user_id: int = user_id
         self._agency_id: str = agency

@@ -1,6 +1,8 @@
 from datetime import datetime
+from controllers.account import Account
 from controllers.session import Session
 from mocks.account_mockup import AccountMockup
+from views.user_account_page import user_account_page
 
 
 def user_page_index(option: str):
@@ -28,6 +30,51 @@ def user_page_index(option: str):
 
     return user_page, option
 
+def user_account_login(option: str):
+    user = Session.get_user()
+
+    print(f"""
+============================================
+    Entrar na minha conta
+    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    
+    [c] Cancelar
+    [x] Fechar Aplicação
+    \n
+============================================
+""")
+    
+    inputs = {
+        "Agência": "",
+        "Número da conta": ""
+    }
+
+    for key, value in inputs.items():
+        value = input(f"{key}: ")
+
+        if value.upper() == "C":
+            return user_page, False
+        
+        if value.upper() == "X":
+            return False, False
+
+    password = input("Senha: ")
+
+    account_number = AccountMockup.login_account(
+        user_id=user.get_id(), 
+        agency_id=inputs["Agência"], 
+        account_number=inputs["Número da conta"], 
+        password=password    
+    )
+
+    if account_number == False:
+        input("\nDados ou Senha inválida!")
+        return user_account_login, False
+
+    Session.account_number = account_number
+
+    return user_account_page, option
+
 def user_page_show_accounts(option: str):
     user = Session.get_user()
     accounts = AccountMockup.get_account(user_id=user.get_id())
@@ -53,8 +100,43 @@ def user_page_show_accounts(option: str):
 
     return user_page, option
     
+def user_create_account(_: str):
+    user = Session.get_user()
 
+    print(f"""
+============================================
+    Abrir uma nova conta
+    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    
+    [c] Cancelar
+    [x] Fechar Aplicação
+    \n
+============================================
+""")
 
+    value = input("Agência: ")
+
+    if value.upper() == "C":
+        return user_page, False
+    
+    if value.upper() == "X":
+        return False, False
+    
+    agency = value
+
+    password = input("Senha: ")
+
+    AccountMockup.register_account(
+        account=Account(
+            user_id=user.get_id(), 
+            agency=agency,
+            password=password
+        )
+    )
+
+    input()
+
+    return user_page, False
 
 def user_page(option: str):
     if option == "Q":
@@ -62,9 +144,9 @@ def user_page(option: str):
         return home_page, False
 
     DISPLAY_SCREEN = {
-        "1": user_page,
+        "1": user_account_login,
         "2": user_page_show_accounts,
-        "3": user_page
+        "3": user_create_account
     }
 
     return DISPLAY_SCREEN.get(option, user_page_index)(option)

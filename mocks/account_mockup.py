@@ -18,7 +18,8 @@ class AccountMockup:
 
     @staticmethod
     def get_next_id():
-        return ":07d".format(len(AccountMockup.account_list) + 1)
+        next_id = len(AccountMockup.account_list) + 1
+        return f"{next_id:07d}"
     
     @staticmethod
     def get_account(*, user_id: int | None = None, agency_id: int | None = None, account_number: int | None = None):
@@ -37,13 +38,14 @@ class AccountMockup:
     
     @staticmethod
     def register_account(*, account: Account):
-        user: User = UserMockup.get_user(account._user_id)
+        user: User = UserMockup.get_user(id=account._user_id)
 
         if user == None:
-            return print("O Usuário informado não existe!")
+            return print("O Usuário solicitante não foi encontrado!")
 
         account.account_number = AccountMockup.get_next_id()
         AccountMockup.account_list.append(account)
+        print(f"A conta foi criada com sucesso! O seu número é: {account.account_number}")
 
     @staticmethod
     def delete_account(*, user_id: str, account_number: str):
@@ -55,6 +57,18 @@ class AccountMockup:
         else:
             print(f"A conta de número {account_number} informada não foi encontrada!")
         
+    @staticmethod
+    def login_account(*, user_id: int, agency_id: str, account_number: str, password: str):
+        account = AccountMockup.get_account(user_id=user_id, agency_id=agency_id, account_number=account_number)
 
+        account = [a for a in account if a._password == password]
+
+        if account:
+            if len(account) > 0:
+                return account[0].account_number
+
+        return False
+        
+        
 
         
