@@ -169,6 +169,7 @@ Para rodar o projeto é necessário ter instalado em sua máquina o `Python v3.1
 
 ```bash
 $ git clone https://github.com/Delgado-tech/python-bank-challenge.git
+$ git checkout v2
 $ cd python-bank-challenge
 ```
 
