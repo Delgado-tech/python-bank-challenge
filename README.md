@@ -1,6 +1,6 @@
 <img id="header" src="https://capsule-render.vercel.app/api?type=waving&color=0:4B8BBE,100:FFD43B&height=150&section=header" width="100%"/>
 
-<h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python</h1>
+<h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python v1</h1>
 
 <br>
 
@@ -170,12 +170,11 @@ Para rodar o projeto é necessário ter instalado em sua máquina o `Python v3.1
 ```bash
 $ git clone https://github.com/Delgado-tech/python-bank-challenge.git
 $ git checkout v2
-$ cd python-bank-challenge
 ```
 
 #### Seleção do ambiente virtual
 
-Para configurar o ambiente virtual do projeto no VSCode, siga os passos abaixo:
+Para baixar e configurar o ambiente virtual do projeto no VSCode, siga os passos abaixo:
 
 > 1 - Baixe o ambiente virtual venv com: `python -m venv .venv`
 >
