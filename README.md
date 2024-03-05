@@ -1,6 +1,6 @@
 <img id="header" src="https://capsule-render.vercel.app/api?type=waving&color=0:4B8BBE,100:FFD43B&height=150&section=header" width="100%"/>
 
-<h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python v1</h1>
+<h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python v2</h1>
 
 <br>
 
