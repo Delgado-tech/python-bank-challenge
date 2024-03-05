@@ -1,6 +1,6 @@
 <img id="header" src="https://capsule-render.vercel.app/api?type=waving&color=0:4B8BBE,100:FFD43B&height=150&section=header" width="100%"/>
 
-<h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python</h1>
+<h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python v1</h1>
 
 <br>
 
@@ -70,13 +70,15 @@ $ cd python-bank-challenge
 
 #### Seleção do ambiente virtual
 
-Para configurar o ambiente virtual do projeto no VSCode, siga os passos abaixo:
+Para baixar e configurar o ambiente virtual do projeto no VSCode, siga os passos abaixo:
 
-> 1 - Pressione `[Ctrl+P]` para abrir a caixa de comandos.
+> 1 - Baixe o ambiente virtual venv com:  `python -m venv .venv`
 >
-> 2 - Digite `> Python: Select Interpreter` e pressione `[Enter]`.
+> 2 - Pressione `[Ctrl+P]` para abrir a caixa de comandos.
 >
-> 3 - Uma janela será exibida, nela clique na opção `Python 3.12.2 ('.venv':venv)`.
+> 3 - Digite `> Python: Select Interpreter` e pressione `[Enter]`.
+>
+> 4 - Uma janela será exibida, nela clique na opção `Python 3.12.2 ('.venv':venv)`.
 
 Com essas etapas concluídas, você estará utilizando o ambiente virtual do projeto.
 <br><br>
