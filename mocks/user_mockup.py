@@ -62,8 +62,10 @@ class UserMockup:
         if user:
             UserMockup.user_list.remove(user)
             print(f"Usuário de id {id} foi deletado com sucesso!")
-        else:
-            print(f"Id {id} não encontrado!")
+            return True
+        
+        print(f"Id {id} não encontrado!")
+        return False
 
     @staticmethod
     def login_user(*, email, password):

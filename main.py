@@ -1,8 +1,5 @@
-from datetime import datetime, timedelta
-
 from utils.clear_console import clear_console
-from views.home_page import home_page
-from views.user_page import user_page
+from views.home.page import home_page
 
 
 
@@ -12,7 +9,7 @@ def exit_message():
     clear_console()
 
 def main():
-    view = user_page#home_page
+    view = home_page
     default_option = "0"
     option = default_option
 
