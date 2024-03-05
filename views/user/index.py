@@ -1,5 +1,7 @@
 from datetime import datetime
 from controllers.session import Session
+from utils.date.console_current_time import console_current_time
+from views.style import Fore_Style
 
 
 def user_page_index(option: str):
@@ -7,14 +9,14 @@ def user_page_index(option: str):
 
     user = Session.get_user()
 
-    print(f"""
+    print(Fore_Style.PRIMARY.value, f"""
 ============================================
     Banco Rev
-    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    {console_current_time()}
 
-    Usuário: {user.name}
+    Usuário: {Fore_Style.SECONDARY.value}{user.name}{Fore_Style.PRIMARY.value}
     
-    Saques diários restantes: {user._daily_withdraws}
+    Saques diários restantes: {Fore_Style.SECONDARY.value}{user._daily_withdraws}{Fore_Style.PRIMARY.value}
     
     Escolha uma opção:
     

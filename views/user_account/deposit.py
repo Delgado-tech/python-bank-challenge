@@ -1,7 +1,9 @@
 from datetime import datetime
 from controllers.session import Session
 from controllers.transaction import Transaction
+from utils.date.console_current_time import console_current_time
 from utils.parse_float import parse_float
+from views.style import Fore_Style
 
 
 def user_account_page_deposit(_):
@@ -9,10 +11,10 @@ def user_account_page_deposit(_):
 
     account = Session.get_account()
 
-    print(f"""
+    print(Fore_Style.PRIMARY.value, f"""
 ============================================
     Banco Rev
-    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    {console_current_time()}
 
     Realizar Deposito
 
@@ -20,7 +22,7 @@ def user_account_page_deposit(_):
 
     """)
 
-    value = input("Valor: R$ ")
+    value = input(f"Valor: {Fore_Style.SUCCESS.value}R$ ")
 
     if value.upper() == "X":
         return user_account_page, False
@@ -28,7 +30,7 @@ def user_account_page_deposit(_):
     amount = parse_float(value)
 
     if amount <= 0:
-        input("O valor informado é inválido!")
+        input(f"\n{Fore_Style.DANGER.value}O valor informado é inválido!")
         return user_account_page_deposit, False
     
     account.balance += amount

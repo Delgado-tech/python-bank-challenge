@@ -1,5 +1,6 @@
 from controllers.session import Session
 from mocks.account_mockup import AccountMockup
+from views.style import Fore_Style
 
 
 def user_account_page_delete_account(_):
@@ -8,7 +9,7 @@ def user_account_page_delete_account(_):
     user = Session.get_user()
     account = Session.get_account()
 
-    print("""
+    print(Fore_Style.DANGER.value, """
 ============================================
     Banco Rev
 
@@ -27,7 +28,7 @@ def user_account_page_delete_account(_):
         return user_account_page, False
 
     if account._password != password:
-        print("\nAs senhas não batem! - Operação cancelada")
+        input("\nAs senhas não batem! - Operação cancelada")
         return user_account_page, False
     
     result = AccountMockup.delete_account(user_id=user.user_id, account_number=account.account_number)

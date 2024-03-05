@@ -1,5 +1,6 @@
 from controllers.session import Session
 from mocks.user_mockup import UserMockup
+from views.style import Fore_Style
 
 
 def user_page_delete_user(_):
@@ -7,7 +8,7 @@ def user_page_delete_user(_):
     
     user = Session.get_user()
 
-    print("""
+    print(Fore_Style.DANGER.value, """
 ============================================
     Banco Rev
 
@@ -26,7 +27,7 @@ def user_page_delete_user(_):
         return user_page, False
 
     if user._password != password:
-        print("\nAs senhas não batem! - Operação cancelada")
+        input("\nAs senhas não batem! - Operação cancelada")
         return user_page, False
     
     result = UserMockup.delete_user(id=user.user_id)

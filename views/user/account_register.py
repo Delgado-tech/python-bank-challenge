@@ -2,6 +2,8 @@ from datetime import datetime
 from controllers.account import Account
 from controllers.session import Session
 from mocks.account_mockup import AccountMockup
+from utils.date.console_current_time import console_current_time
+from views.style import Fore_Style
 
 
 def user_page_register_account(_):
@@ -9,10 +11,10 @@ def user_page_register_account(_):
 
     user = Session.get_user()
 
-    print(f"""
+    print(Fore_Style.PRIMARY.value, f"""
 ============================================
     Abrir uma nova conta
-    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    {console_current_time()}
     
     [c] Cancelar
     [x] Fechar Aplicação
@@ -20,7 +22,7 @@ def user_page_register_account(_):
 ============================================
 """)
 
-    value = input("Agência: ")
+    value = input(f"{Fore_Style.SECONDARY.value}Agência: {Fore_Style.WHITE.value}")
 
     if value.upper() == "C":
         return user_page, False
@@ -30,7 +32,7 @@ def user_page_register_account(_):
     
     agency = value
 
-    password = input("Senha: ")
+    password = input(f"{Fore_Style.SECONDARY.value}Senha: {Fore_Style.WHITE.value}")
 
     AccountMockup.register_account(
         account=Account(

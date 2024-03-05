@@ -1,6 +1,8 @@
 from datetime import datetime
 from controllers.session import Session
 from mocks.account_mockup import AccountMockup
+from utils.date.console_current_time import console_current_time
+from views.style import Fore_Style
 
 
 def user_account_login(_):
@@ -9,10 +11,10 @@ def user_account_login(_):
 
     user = Session.get_user()
 
-    print(f"""
+    print(Fore_Style.PRIMARY.value, f"""
 ============================================
     Entrar na minha conta
-    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    {console_current_time()}
     
     [c] Cancelar
     [x] Fechar Aplicação
@@ -26,7 +28,7 @@ def user_account_login(_):
     }
 
     for key, value in inputs.items():
-        value = input(f"{key}: ")
+        value = input(f"{Fore_Style.SECONDARY.value}{key}: {Fore_Style.WHITE.value}")
 
         if value.upper() == "C":
             return user_page, False
@@ -36,7 +38,7 @@ def user_account_login(_):
         
         inputs[key] = value
 
-    password = input("Senha: ")
+    password = input(f"{Fore_Style.SECONDARY.value}Senha: {Fore_Style.WHITE.value}")
 
     account_number = AccountMockup.login_account(
         user_id=user.get_id(), 
@@ -46,7 +48,7 @@ def user_account_login(_):
     )
 
     if account_number == False:
-        input("\nDados ou Senha inválida!")
+        input(f"{Fore_Style.DANGER.value}\nDados ou Senha inválida!")
         return user_account_login, False
 
     Session.account_number = account_number

@@ -1,6 +1,6 @@
 from utils.clear_console import clear_console
 from views.home.page import home_page
-
+from views.style import Fore_Style
 
 
 def exit_message():
@@ -17,6 +17,7 @@ def main():
         clear_console()
         
         view, option = view(option)
+        print(Fore_Style.RESET.value)
         
         if option:        
             option = input("> ").upper()
@@ -26,6 +27,7 @@ def main():
 
         if option == "X" or view == False:
             break
+        
 
     clear_console()
     exit_message()

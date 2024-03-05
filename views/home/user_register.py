@@ -1,3 +1,4 @@
+import calendar
 import re
 import validate_cpf
 
@@ -7,17 +8,19 @@ from controllers.session import Session
 from controllers.user import User
 from mocks.user_mockup import UserMockup
 from utils.clamp import clamp
+from utils.date.console_current_time import console_current_time
 from utils.parse_int import parse_int
+from views.style import Fore_Style
 
 
 def home_page_user_register(_):
     from views.home.page import home_page
     from views.user.page import user_page
 
-    print(f"""
+    print(Fore_Style.PRIMARY.value, f"""
 ============================================
     Cadastrar
-    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    {console_current_time()}
     
     [c] Cancelar
     [x] Fechar Aplicação
@@ -40,7 +43,7 @@ def home_page_user_register(_):
     }
 
     for key, value in inputs.items():
-        value = input(f"{key}: ")
+        value = input(f"{Fore_Style.SECONDARY.value}{key}: {Fore_Style.WHITE.value}")
 
         if value.upper() == "C":
             return home_page, False
@@ -53,24 +56,28 @@ def home_page_user_register(_):
             if len(formated) > 0:
                 value = formated[0]
                 if UserMockup.get_user(cpf=value):
-                    input("\nO CPF informado já está em uso!")
+                    input(f"\n{Fore_Style.DANGER.value}O CPF informado já está em uso!")
                     return home_page_user_register, False
                 
                 if validate_cpf.is_valid(value) == False:
-                    input("\nO CPF informado é inválido")
+                    input(f"\n{Fore_Style.DANGER.value}O CPF informado é inválido")
                     return home_page_user_register, False  
             else:
-                input("\nO CPF informado é inválido")
+                input(f"\n{Fore_Style.DANGER.value}O CPF informado é inválido")
                 return home_page_user_register, False  
         elif key == "E-mail":
             value = value.replace(" ", "")
             if UserMockup.get_user(email=value):
-                input("\nO E-mail informado já está em uso!")
+                input(f"\n{Fore_Style.DANGER.value}O E-mail informado já está em uso!")
                 return home_page_user_register, False
         
         inputs[key] = value
 
     password = input("Senha: ")
+
+    bday_year = clamp(parse_int(inputs["Data de Nascimento (Ano)"]), 1900, datetime.now().year - 18)
+    bday_month = clamp(parse_int(inputs["Data de Nascimento (Mês)"]), 1, 12)
+    bday_day = clamp(parse_int(inputs["Data de Nascimento (Dia)"]), 1, calendar.monthrange(bday_year, bday_month)[1])
 
     result = UserMockup.register_user(
         user=User(
@@ -79,9 +86,9 @@ def home_page_user_register(_):
             name=inputs["Nome"], 
             cpf=inputs["CPF"], 
             birtdate=datetime( 
-                clamp(parse_int(inputs["Data de Nascimento (Ano)"]), 1900, datetime.now().year - 18), 
-                clamp(parse_int(inputs["Data de Nascimento (Mês)"]), 1, 12),
-                clamp(parse_int(inputs["Data de Nascimento (Dia)"]), 1, 31),
+                bday_year,
+                bday_month,
+                bday_day
             ), 
             address=Address(
                 street=inputs["Endereço (Rua)"],
@@ -98,5 +105,5 @@ def home_page_user_register(_):
     
     Session.user_id = result
 
-    print("Usuário cadastrado com sucesso!")
+    input(f"{Fore_Style.SUCCESS.value}\nUsuário cadastrado com sucesso!")
     return user_page, False

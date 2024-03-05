@@ -2,6 +2,7 @@ from datetime import datetime
 from controllers.user import User
 from mocks.user_mockup import UserMockup
 from controllers.account import Account
+from views.style import Fore_Style
 
 
 class AccountMockup:
@@ -44,11 +45,11 @@ class AccountMockup:
         user: User = UserMockup.get_user(id=account._user_id)
 
         if user == None:
-            return print("O Usuário solicitante não foi encontrado!")
+            return print(f"{Fore_Style.DANGER.value}\nO Usuário solicitante não foi encontrado!")
 
         account.account_number = AccountMockup.get_next_id()
         AccountMockup.account_list.append(account)
-        print(f"A conta foi criada com sucesso! O seu número é: {account.account_number}")
+        print(f"{Fore_Style.SUCCESS.value}\nA conta foi criada com sucesso! O seu número é: {account.account_number}")
 
     @staticmethod
     def delete_account(*, user_id: str, account_number: str):
@@ -56,19 +57,19 @@ class AccountMockup:
         
         if account:
             AccountMockup.account_list.remove(account[0])
-            print(f"A conta de número {account_number} foi deletado com sucesso!")
+            print(f"\nA conta de número {account_number} foi deletado com sucesso!")
             return True
 
-        print(f"A conta de número {account_number} informada não foi encontrada!")
+        print(f"\nA conta de número {account_number} informada não foi encontrada!")
         return False
         
     @staticmethod
     def login_account(*, user_id: int, agency_id: str, account_number: str, password: str):
         account = AccountMockup.get_account(user_id=user_id, agency_id=agency_id, account_number=account_number)
 
-        account = [a for a in account if a._password == password]
 
         if account:
+            account = [a for a in account if a._password == password]
             if len(account) > 0:
                 return account[0].account_number
 

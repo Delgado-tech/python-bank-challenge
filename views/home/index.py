@@ -1,13 +1,13 @@
-from datetime import datetime
-
+from utils.date.console_current_time import console_current_time
+from views.style import Fore_Style
 
 def home_page_index(option: str):
     from views.home.page import home_page
 
-    print(f"""
+    print(Fore_Style.PRIMARY.value, f"""
 ============================================
     Seja bem-vindo ao Banco Rev!
-    {datetime.now().strftime("%d/%m/%Y %H:%M")}
+    {console_current_time()}
     
     Escolha uma opção:
     
@@ -16,6 +16,6 @@ def home_page_index(option: str):
     
     [x] Fechar Aplicação \n
 ============================================
-    """)
+    """, Fore_Style.RESET.value)
 
     return home_page, option

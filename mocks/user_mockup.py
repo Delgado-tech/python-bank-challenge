@@ -61,10 +61,10 @@ class UserMockup:
 
         if user:
             UserMockup.user_list.remove(user)
-            print(f"Usuário de id {id} foi deletado com sucesso!")
+            print(f"\nUsuário de id {id} foi deletado com sucesso!")
             return True
         
-        print(f"Id {id} não encontrado!")
+        print(f"\nId {id} não encontrado!")
         return False
 
     @staticmethod

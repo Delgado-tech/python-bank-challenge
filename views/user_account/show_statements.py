@@ -1,5 +1,6 @@
 from controllers.session import Session
 from controllers.transaction import Transaction
+from views.style import Fore_Style
 
 
 def user_account_page_show_statements(_):
@@ -7,6 +8,7 @@ def user_account_page_show_statements(_):
 
     account = Session.get_account()
 
+    print(Fore_Style.PRIMARY.value)
     print("============================================")
     print("Extrato".center(44))
     print("============================================\n")
@@ -21,8 +23,8 @@ def user_account_page_show_statements(_):
         for stt in statements:
             print("--------------------------------------------")
             print(f"Tipo: {stt.type.value.upper()}\n")
-            print(f"Quantia: R$ {stt.amount:.2f}\n")
-            print(f"Realizado em: {stt.date.strftime("%d/%m/%Y %H:%M:%S")}")
+            print(f"Quantia: {Fore_Style.SUCCESS.value}R$ {stt.amount:.2f}\n", Fore_Style.PRIMARY.value)
+            print(f"Realizado em: {Fore_Style.GRAY.value}{stt.date.strftime("%d/%m/%Y %H:%M:%S")}", Fore_Style.PRIMARY.value)
             print("--------------------------------------------")
 
         deposit_count = len([s for s in statements if s.type == Transaction.Type.DEPOSIT])
@@ -32,4 +34,6 @@ def user_account_page_show_statements(_):
         print(f"Depositos: {deposit_count} / Saques: {withdraw_count}")
         print("============================================")
 
+    input()
+    
     return user_account_page, False
