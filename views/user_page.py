@@ -2,6 +2,7 @@ from datetime import datetime
 from controllers.account import Account
 from controllers.session import Session
 from mocks.account_mockup import AccountMockup
+from mocks.user_mockup import UserMockup
 from views.user_account_page import user_account_page
 
 
@@ -30,7 +31,7 @@ def user_page_index(option: str):
 
     return user_page, option
 
-def user_account_login(option: str):
+def user_account_login(_):
     user = Session.get_user()
 
     print(f"""
@@ -75,9 +76,9 @@ def user_account_login(option: str):
 
     Session.account_number = account_number
 
-    return user_account_page, option
+    return user_account_page, False
 
-def user_page_show_accounts(option: str):
+def user_page_show_accounts(_):
     user = Session.get_user()
     accounts = AccountMockup.get_account(user_id=user.get_id())
 
@@ -85,7 +86,7 @@ def user_page_show_accounts(option: str):
     print("Contas".center(44))
     print("============================================\n")
 
-    if len(accounts) == 0:
+    if not accounts:
         input("Nenhuma conta encontrada!")
     else:
         for acc in accounts:
@@ -100,9 +101,9 @@ def user_page_show_accounts(option: str):
         print(f"Contas: {len(accounts)} / Saldo Geral: R$ {sum(a.balance for a in accounts):.2f}")
         print("============================================")
 
-    return user_page, option
+    return user_page, False
     
-def user_create_account(_: str):
+def user_page_create_account(_):
     user = Session.get_user()
 
     print(f"""
@@ -140,6 +141,42 @@ def user_create_account(_: str):
 
     return user_page, False
 
+def user_page_delete_account(_):
+    user = Session.get_user()
+
+    print("""
+============================================
+    Banco Rev
+
+    Você tem certeza que deseja deletar o seu cadastro?
+    Essa ação não poderá ser desfeita!
+    
+    Caso queira prosseguir confirme digitando a senha dele:
+    
+    [x] Cancelar
+    
+""")
+    
+    password = input("Senha: ")
+
+    if password.upper() == "X":
+        return user_account_page, False
+
+    if user._password != password:
+        print("\nAs senhas não batem! - Operação cancelada")
+        return user_account_page, False
+    
+    result = UserMockup.delete_user(id=user.user_id)
+    input()
+
+    if result:
+        Session.clear()
+        from views.home_page import home_page
+        return home_page, False
+
+    return user_page, False
+
+
 def user_page(option: str):
     if option == "Q":
         Session.clear()
@@ -149,7 +186,7 @@ def user_page(option: str):
     DISPLAY_SCREEN = {
         "1": user_account_login,
         "2": user_page_show_accounts,
-        "3": user_create_account
+        "3": user_page_create_account
     }
 
     return DISPLAY_SCREEN.get(option, user_page_index)(option)

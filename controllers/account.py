@@ -9,8 +9,7 @@ class Account:
     account_number: str
     balance: float
 
-    deposits: list[Transaction] = []
-    withdraws: list[Transaction] = []
+    statements: list[Transaction] = []
 
     def __init__(self, *, user_id: int, agency: str, password: str, created_date: datetime = datetime.now(), balance: float = 0.0, account_number: str | None = None) -> None:
         if account_number: self.account_number = account_number
@@ -27,7 +26,7 @@ class Account:
         return self._agency_id
     
     def get_account_number(self):
-        return self._account_number
+        return self.account_number
     
     def change_password(self, *, current_password, new_password):
         if self._password != current_password:

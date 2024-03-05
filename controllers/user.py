@@ -7,6 +7,7 @@ from controllers.transaction import Transaction
 from utils.date.string_to_date import string_to_date
 
 default_max_daily_withdraws: int = 3
+defualt_max_withdraw_amount: float = 500.0
 
 class User:
     user_id: int
@@ -14,6 +15,7 @@ class User:
 
     email: str
     max_daily_withdraws: int = 3
+    max_withdraw_amount: float = defualt_max_withdraw_amount
 
     cpf: str
     name: str

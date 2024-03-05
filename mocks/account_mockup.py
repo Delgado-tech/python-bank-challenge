@@ -22,11 +22,14 @@ class AccountMockup:
         return f"{next_id:07d}"
     
     @staticmethod
-    def get_account(*, user_id: int | None = None, agency_id: int | None = None, account_number: int | None = None):
-        search_results: list[Account] = []
+    def get_account(*, user_id: int | None = None, agency_id: str | None = None, account_number: str | None = None):
+        if not user_id and not agency_id and not account_number:
+            return None
+        
+        search_results: list[Account] = AccountMockup.account_list.copy()
         
         if user_id:
-            search_results = [a for a in AccountMockup.account_list if a.get_user_id() == user_id]
+            search_results = [a for a in search_results if a.get_user_id() == user_id]
 
         if agency_id:
             search_results = [a for a in search_results if a.get_agency_id() == agency_id]
@@ -54,8 +57,10 @@ class AccountMockup:
         if account:
             AccountMockup.account_list.remove(account[0])
             print(f"A conta de número {account_number} foi deletado com sucesso!")
-        else:
-            print(f"A conta de número {account_number} informada não foi encontrada!")
+            return True
+
+        print(f"A conta de número {account_number} informada não foi encontrada!")
+        return False
         
     @staticmethod
     def login_account(*, user_id: int, agency_id: str, account_number: str, password: str):

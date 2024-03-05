@@ -29,7 +29,7 @@ def home_page_index(option: str):
 
     return home_page, option
 
-def home_page_login(option: str):
+def home_page_login(_):
 
     print(f"""
 ============================================
@@ -62,13 +62,12 @@ def home_page_login(option: str):
 
     Session.user_id = user_id
 
-    return user_page, option
+    return user_page, False
 
-
-def home_page_register(option: str):
+def home_page_register(_):
     print(f"""
 ============================================
-    Entrar
+    Cadastrar
     {datetime.now().strftime("%d/%m/%Y %H:%M")}
     
     [c] Cancelar
@@ -124,7 +123,6 @@ def home_page_register(option: str):
 
     password = input("Senha: ")
 
-    print(inputs)
     result = UserMockup.register_user(
         user=User(
             email=inputs["E-mail"], 
@@ -152,10 +150,7 @@ def home_page_register(option: str):
     Session.user_id = result
 
     print("Usuário cadastrado com sucesso!")
-    return user_page, option
-
-
-
+    return user_page, False
 
 def home_page(option: str):
 
