@@ -2,7 +2,10 @@
 
 <h1> <img align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="64px" /> Desafio Python v2</h1>
 
+
 <br>
+
+> [Desafio Python v1](https://github.com/Delgado-tech/python-bank-challenge/tree/v1)
 
 ### Descrição:
 O desafio proposto consiste na criação de um sistema bancario simples com as opções `sacar`, `depositar` e `visualizar extrato`.
